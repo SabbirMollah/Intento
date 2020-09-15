@@ -37,7 +37,8 @@ body{
 
 
 #header{
-	overflow:auto
+	overflow:auto;
+        float: right;
 }
 
 .img1{
@@ -93,14 +94,12 @@ h2{
 }
 
 .box{
-	border:4px;
-	border-radius:10px;
 	width:250px;
 	padding:20px;
-	background:#fff;
-	float:left;
+	float:right;
 	margin-right:15px;
 	background-opacity: 0.5;
+	align: left;
 }
 
 .box h1{
@@ -121,21 +120,21 @@ h2{
 
 .btn{
 	display:block;
-	width:150px;
-	height:40px;
+	width:80px;
+	height:30px;
 	background: url(images/btnb.png);
-	font-size:18px;
+	font-size:15px;
 	font-weight:bold;
 	text-decoration:none;
 	text-align:center;
-	line-height:40px;
+	line-height:20px;
 	color:#fff;
 	border: none;
 	border-radius: 12px;
 }
 
 .btn:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 
@@ -156,7 +155,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  width: 100%;
+ 
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -170,10 +169,16 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-fdiv {
+divf {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+  float: right;
+  position: absolute;
+  overflow: auto;
+  margin: auto;
+  width: 800px;
+  
 }
 
 

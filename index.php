@@ -6,7 +6,7 @@
         <div>
             <section>
                 <?php
-                    if (isset($_SESSION['userid'])) {
+                    if (isset($_SESSION['email'])) {
                         echo '<p>You are logged in!</p>';
                     }
                 
