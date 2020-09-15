@@ -1,11 +1,11 @@
 <?php
 if(isset($_POST['login-submit'])){
-    require 'connectdb.php';
-    $mailuid = $_POST['email'];
+    require 'connect_db.php';
+    $email = $_POST['email'];
     $pwd = $_POST['pwd'];
 
 
-    if (empty($mailuid) || empty($pwd)) {
+    if (empty($email) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
         exit();
     }
@@ -31,7 +31,7 @@ if(isset($_POST['login-submit'])){
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['pwd'] = $row['pwd'];
 
-                    header("Location: ../inder.php?error=wrongpassword");
+                    header("Location: ../index.php?login=success");
                     exit();
 
                 }

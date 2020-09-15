@@ -3,11 +3,22 @@
 ?>
 
     <main>
-    <div>
-        <p>You are logged out!</p>
-        <p>You are logged in!</p>
+        <div>
+            <section>
+                <?php
+                    if (isset($_SESSION['userid'])) {
+                        echo '<p>You are logged in!</p>';
+                    }
+                
+                    else{
+                        echo '<p>You are logged out!</p>';
+                    }
+                ?>
+                
+   
+            </section>
+        </div>
     </main>
-    </div>
 <?php
     require "footer.php";
 ?>
