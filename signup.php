@@ -19,13 +19,13 @@
                 <br>
                 <input type="text" name="email" placeholder="E-mail">
                 <br><br>
-                <label for="password">Password</label>
+                <label for="pwd">Password</label>
                 <br>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="pwd" placeholder="Password">
                 <br><br>
-                <label for="password">Repeat Password</label>
+                <label for="pwd">Repeat Password</label>
                 <br>
-                <input type="password" name="password-repeat" placeholder="Repeat password">
+                <input type="password" name="pwd-repeat" placeholder="Repeat password">
                 <br><br>
                 <button type="submit" name="signup-submit" class="btn">Signup</button>
             </form>
