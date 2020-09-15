@@ -3,7 +3,7 @@
 ?>
 
     <main>
-    <div class="fdiv">
+    <div>
         <section>
             <h1>Signup</h1>
             <form action="includes/signup.inc.php" method="post">

@@ -8,7 +8,7 @@ include('includes/connect_db.php');
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
-<link rel="stylesheet" href="style.css">
+
 
 
 </head>
@@ -19,15 +19,15 @@ include('includes/connect_db.php');
 <header>
     <nav>
         <a href="index.php"><img src="images/logo.png" alt="logo"></a>
-        <ul class="navigation">
+        <ul>
 	    <li><a href="index.php">Home</a></li>
         <li><a href="#">About US</a></li>
         </ul>
     </nav>
 
     
-    <div class="divf">
-        <div class="box">
+    <div>
+        <div>
             <?php
                 if (isset($_SESSION['email'])) {
                     echo '<form action="includes/logout.inc.php" method="post">
