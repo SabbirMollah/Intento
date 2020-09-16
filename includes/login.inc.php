@@ -29,6 +29,8 @@ if(isset($_POST['login-submit'])){
                 else if($pwdcheck == true){
                     session_start();
                     $_SESSION['email'] = $row['email'];
+                    $_SESSION['first_name'] = $row['first_name'];
+                    $_SESSION['last_name'] = $row['last_name'];
                     $_SESSION['pwd'] = $row['pwd'];
 
                     header("Location: ../index.php?login=success");

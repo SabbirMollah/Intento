@@ -17,25 +17,34 @@ include('includes/connect_db.php');
 <h1>Intento<br/> : : A project management solution : : </h1>
 
 <header>
-    <nav>
-        <a href="index.php"><img src="images/logo.png" alt="logo"></a>
-        <ul>
-	    <li><a href="index.php">Home</a></li>
-        <li><a href="#">About US</a></li>
-        </ul>
-    </nav>
-
+    
     
     <div>
         <div>
             <?php
                 if (isset($_SESSION['email'])) {
-                    echo '<form action="includes/logout.inc.php" method="post">
-                    <button type="Submit" name="logout-submit" class="btn" >Logout</button>
+                    echo 'Hello '. $_SESSION['last_name'] . '!'.'<nav>
+                    <a href="index.php"><img src="images/logo.png" alt="logo"></a>
+                    <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href= "teams.php">Teams</a></li>
+                    </ul>
+                </nav>
+            
+                    <form action="includes/logout.inc.php" method="post">
+                    <button type="Submit" name="logout-submit" class="btn"> Logout </button>
                     </form>';
                 }
                 else{
-                    echo '<form action="includes/login.inc.php" method="post">
+                    echo '<nav>
+                    <a href="index.php"><img src="images/logo.png" alt="logo"></a>
+                    <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="#">About US</a></li>
+                    </ul>
+                </nav>
+                    <form action="includes/login.inc.php" method="post">
                     <input type="text" name="email" placeholder="E-mail..">
                     <input type="password" name="pwd" placeholder="Password">
                     <button type="Submit" name="login-submit" class="btn">Login</button>
