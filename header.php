@@ -30,7 +30,8 @@ include('includes/connect_db.php');
                     <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="#">Profile</a></li>
-                    <li><a href= "teams.php">Teams</a></li>
+                    <li><a href="teams.php">Teams</a></li>
+                    <li><a href="projects.php">Projects</a></li>
                     </ul>
                 </nav>
             
