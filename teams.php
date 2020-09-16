@@ -45,13 +45,13 @@
                 <?php
                     require "includes/connect_db.php";
 
-                    $sql = 'SELECT team_name, team_description FROM teams, belongs_to WHERE teams.team_id = belongs_to.team_id AND user_email="'. $_SESSION['email'] .'"';
+                    $sql = 'SELECT team_name, team_description, leader_email FROM teams, belongs_to WHERE teams.team_id = belongs_to.team_id AND user_email="'. $_SESSION['email'] .'"';
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
-                    echo "Team Name: " . $row["team_name"]. " - Description: " . $row["team_description"] . "<br>";
+                    echo "Team Name: " . $row["team_name"]. " - Description: " . $row["team_description"] . " -Team leader: ". $row["leader_email"]. "<br>";
                         }
                     } 
                     else {

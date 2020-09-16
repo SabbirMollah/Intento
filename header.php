@@ -7,7 +7,9 @@ include('includes/connect_db.php');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Intento</title>
+<link rel="icon" href="images/icon.png" type="image/x-icon">
+
 
 
 
@@ -53,7 +55,7 @@ include('includes/connect_db.php');
                 }
             ?>
             
-            
+
         </div>
     </div>
 </header>
