@@ -37,7 +37,7 @@
         else{
             mysqli_stmt_bind_param($stmt, "ss", $team_id, $member_email);
             mysqli_stmt_execute($stmt);
-            header("Location: ../team-info.php?remove-member=success&team-id=".$team_id);
+            header("Location: ../team-info.php?add-member=success&team-id=".$team_id);
             
             exit();
         }

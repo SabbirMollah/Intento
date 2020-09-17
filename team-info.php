@@ -1,6 +1,10 @@
 <?php
     require "header.php";
     require "includes/connect_db.php";
+
+    // Check ownership
+    // Check if belongs to
+    // if false -> exit()
 ?>
 
     <main>
