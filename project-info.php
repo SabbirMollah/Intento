@@ -29,9 +29,11 @@
             </section>
 
             <section>
-                <h2>Assigned Project Teams</h2>
+                <h2>Appointed Project Teams</h2>
                 <?php
-                    $sql = 'SELECT team_name, team_description, leader_email, project_id FROM teams, assigned_to WHERE teams.team_id=assigned_to.team_id AND teams.team_id=?';
+
+
+                    $sql = 'SELECT teams.team_id, team_name, team_description FROM teams, appointed_to WHERE teams.team_id = appointed_to.team_id AND project_id=?';
                     $stmt = mysqli_stmt_init($conn);
                     if (mysqli_stmt_prepare($stmt, $sql)) {
                         
@@ -42,9 +44,9 @@
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "
                                 <form action=\"includes/project-info.inc.php\" method=\"post\">
-                                    <label>Team name: ". $row['team_name']. " ". $row['team_description'] ." - Team Leader's Email:". $row['leader_email'] ."</label>
-                                    <input name=\"project-id\" value=\"". $row['project-id'] ."\"hidden/>
-                                    <input name=\"team-id\" value=\"". $_GET['team-id'] ."\"hidden/>
+                                    <label>Team name: ". $row['team_name']. " ". $row['team_description'] ."</label>
+                                    <input name=\"project_id\" value=\"". $_GET['project-id'] ."\"hidden/>
+                                    <input name=\"team_id\" value=\"". $row['team_id'] ."\"hidden/>
                                     <input type=\"submit\" name=\"remove-team\" value=\"Remove team\" />
                                 </form>";
                             }
@@ -59,15 +61,30 @@
 
 
             <section>
+                
                 <h2>Add a team to this project:</h2>
-                <form action="includes/project-info.inc.php" method="post">
-                    <label for="team_name">Team name</label>
-                    <br>
-                    <input type="text" name="team_name" placeholder="team name">
-                    <input name="project-id" value= <?php echo '"'. $_GET['project-id'] .'"'; ?>hidden/>
-                    <br><br>
-                    <button type="submit" name="add-team" class="btn">Add Team</button>
-                </form>
+
+                <form action="includes/project-info.inc.php" method="post">     
+
+                    <div>
+                    <?php
+                    $sql = 'SELECT * FROM teams, users WHERE leader_email =email';
+                    $result = mysqli_query($conn, $sql);
+                    $queryResults = mysqli_num_rows($result);
+                    if($queryResults > 0){
+                        while($row = mysqli_fetch_assoc($result)){
+                            echo "<form action=\"includes/project-info.inc.php\" method=\"post\">
+                                    <label>Team name: ". $row['team_name']. " ". $row['team_description']."</label>
+                                    <input name=\"team_id\" value=\"". $row['team_id'] ."\"hidden/>
+                                    <input name=\"project-id\" value=\"". $_GET['project-id'] ."\"hidden/>
+                                    <input type=\"submit\" name=\"add-team\" value=\"add team\" />
+                                </form>";
+
+                        }       
+                            
+                    }
+                    ?>
+                    </div>
             </section>
         </div>
     </main>

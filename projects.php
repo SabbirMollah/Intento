@@ -29,7 +29,7 @@
                 <?php
                     require "includes/connect_db.php";
 
-                    $sql = 'SELECT project_id, project_name, project_start_date, user_email FROM projects, favorites WHERE favorites.project_id = projects.project_id AND user_email=?';
+                    $sql = 'SELECT projects.project_id, project_name, project_start_date, user_email FROM projects, favorites WHERE favorites.project_id = projects.project_id AND user_email=?';
                     $stmt = mysqli_stmt_init($conn);
                     if (mysqli_stmt_prepare($stmt, $sql)) {
                         
@@ -44,9 +44,12 @@
                                     <label>Project name: ". $row['project_name'] ."</label>
                                     <label>Project start date: ". $row['project_start_date'] ."</label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
-                                    <input type=\"submit\" name=\"project-info\" value=\"Info\" />
+                                    <input name=\"user-email\" value=\"". $_SESSION['email'] ."\"hidden/>
+                                    <input type=\"submit\" name=\"project-favorite\" value=\"Info\" />
                                     <input type=\"submit\" name=\"project-delete\" value=\"Delete\" />
                                 </form>";
+
+                                
                             }
                         }
                         else {
@@ -79,6 +82,7 @@
                                     <label>Project start date: ". $row['project_start_date'] ."</label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input type=\"submit\" name=\"project-info\" value=\"Info\" />
+                                    <input type=\"submit\" name=\"favorite-project\" value=\"Add Favorite\" />
                                     <input type=\"submit\" name=\"project-delete\" value=\"Delete\" />
                                 </form>";
                             }
@@ -96,7 +100,7 @@
                 <?php
                     require "includes/connect_db.php";
 
-                    $sql = 'SELECT appointed_to.team_id, appointed_to.project_id, project_name, project_start_date, owner_email FROM projects, appointed_to WHERE projects.project_id = appointed_to.project_id AND user_email=?';
+                    $sql = 'SELECT appointed_to.team_id, appointed_to.project_id, project_name, project_start_date, owner_email FROM projects, appointed_to WHERE projects.project_id = appointed_to.project_id AND owner_email= ?';
                     $stmt = mysqli_stmt_init($conn);
                     if (mysqli_stmt_prepare($stmt, $sql)) {
                         

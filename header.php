@@ -15,7 +15,8 @@ include('includes/connect_db.php');
 
 </head>
 
-<body>
+<body style="background-image: url('images/bg.png');">
+
 <h1>Intento<br/> : : A project management solution : : </h1>
 
 <header>
