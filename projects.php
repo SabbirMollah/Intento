@@ -2,31 +2,31 @@
     require "header.php";
 ?>
 
-    <main>
-        <div>
+    <main class="main">
+ 
+        
             <section>
-            <form action="includes/projects.inc.php" method="post">
-                <label for="project_name">Project Title</label>
-                <br>
-                <input type="text" name="project_name" placeholder="Project Title">
-                <br><br>
-                <label for="project_start_date">Project Start Date</label>
-                <br>
-                <input type="date" name="project_start_date">
-                <br><br>
-                
-                <button type="submit" name="project-create" class="btn">Create New Project</button>
-            </form>
-                
-   
+                <div class="column">
+                    <form action="includes/projects.inc.php" method="post">
+                        <label for="project_name">Project Title</label>
+                        <br>
+                        <input type="text" name="project_name" placeholder="Project Title">
+                        <br><br>
+                        <label for="project_start_date">Project Start Date</label>
+                        <br>
+                        <input type="date" name="project_start_date">
+                        <br><br>
+                        
+                        <button type="submit" name="project-create" class="btn">Create New Project</button>
+                    </form>
+                </div>
             </section>
-
-
-
-
+            <div class="columns">
             <section>
-                <h2>Projects I Favorited</h2>
-                <?php
+                <div class="column">
+                    <div class="notification">
+                        <h2>Projects I Favorited</h2>
+                    <?php
                     require "includes/connect_db.php";
 
                     $sql = 'SELECT projects.project_id, project_name, project_start_date, user_email FROM projects, favorites WHERE favorites.project_id = projects.project_id AND user_email=?';
@@ -39,30 +39,33 @@
                         if ($result->num_rows > 0) {
                             // output data of each row
                             while($row = mysqli_fetch_assoc($result)) {
+                                
                                 echo "
                                 <form action=\"includes/projects.inc.php\" method=\"post\">
                                     <label>Project name: ". $row['project_name'] ."</label>
                                     <label>Project start date: ". $row['project_start_date'] ."</label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input name=\"user-email\" value=\"". $_SESSION['email'] ."\"hidden/>
+                                    <br>
                                     <input type=\"submit\" name=\"project-info\" value=\"Info\" />
                                     <input type=\"submit\" name=\"favorite-delete\" value=\"Delete\" />
-                                </form>";
-
-                                
+                                </form>";                                
+                                }
                             }
-                        }
                         else {
                             echo "You haven't favorited any projects yet!";
                         }
                     }
-                ?>
-
+                    ?>
+                </div>
+                </div>
             </section>
 
 
             <section>
-                <h2>Projects I Created</h2>
+                <div class="column">
+                <div class="notification">
+                    <h2>Projects I Created</h2>
                 <?php
                     require "includes/connect_db.php";
 
@@ -92,10 +95,14 @@
                         }
                     }
                 ?>
+                </div>
+                </div>
 
             </section>
             
             <section>
+                <div class="column">
+                <div class="notification">
                 <h2>Projects I am appointed to</h2>
                 <?php
                     require "includes/connect_db.php";
@@ -125,7 +132,8 @@
                         }
                     }
                 ?>
-
+            </div>
+            </div>
             </section>
 
             
