@@ -51,20 +51,42 @@
                         mysqli_stmt_bind_param($stmt, "s", $_GET['project-id']);
                         mysqli_stmt_execute($stmt);
                         $result = $stmt->get_result();
+                        $intent_completed = true;
                         if ($result->num_rows > 0) {
                             while($row = mysqli_fetch_assoc($result)) {
+                                $intent_completed = true;
                                 echo "
                                 <form action=\"includes/project-info.inc.php\" method=\"post\">
                                     <label>Intent title: ". $row['title'] ."</label>
                                     <input name=\"intent-title\" value=\"". $row['title'] ."\"hidden/>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input type=\"submit\" name=\"intent-info\" value=\"View\" />
-                                    <input type=\"submit\" name=\"intent-delete\" value=\"Remove\" />
-                                </form>";
+                                    <input type=\"submit\" name=\"intent-delete\" value=\"Remove\" />";
+                                
+                                // Check if all tasks are complete
+                                $sql = 'SELECT * FROM tasks WHERE project_id=? AND intent_title=? AND task_percentage!=100';
+                                $stmt = mysqli_stmt_init($conn);
+                                if (mysqli_stmt_prepare($stmt, $sql)) {
+                                    mysqli_stmt_bind_param($stmt, "ss", $_GET['project-id'], $row['title']);
+                                    mysqli_stmt_execute($stmt);
+                                    $tasks = $stmt->get_result();
+                                    if ($tasks->num_rows > 0) {
+                                        $intent_completed = false;
+                                    }
+                                }
+                                //
+                                if($intent_completed){
+                                    echo "✅";
+                                }
+                                else{
+                                    echo "⭕";
+                                }
+
+                                echo "</form>";
                             }
                         } 
                         else {
-                            echo "No teams in this project yet!";
+                            echo "No intents in this project yet!";
                         }
                     }
                 ?>
