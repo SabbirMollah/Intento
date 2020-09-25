@@ -35,6 +35,7 @@ if(isset($_POST['project-delete'])){
     
     $project_id = $_POST['project-id'];
     
+    
     $sql = "DELETE FROM projects WHERE project_id =?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -59,6 +60,29 @@ if(isset($_POST['project-favorite'])){
     $user_email = $_SESSION['email'];
 
     $sql = "INSERT INTO favorites (project_id, user_email) VALUES(?, ?)";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../projects.php?sqlerror");
+        exit();
+    }
+    else{
+        mysqli_stmt_bind_param($stmt, "ss", $project_id, $user_email);
+        mysqli_stmt_execute($stmt);
+        header("Location: ../projects.php?project-favorite=success");
+        
+        exit();
+    }
+}
+
+
+if(isset($_POST['favorite-delete'])){
+    require 'connect_db.php';
+    session_start();
+    
+    $project_id = $_POST['project-id'];
+    $user_email = $_SESSION['email'];
+
+    $sql = "DELETE FROM favorites WHERE project_id =? AND user_email=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../projects.php?sqlerror");

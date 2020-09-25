@@ -45,8 +45,8 @@
                                     <label>Project start date: ". $row['project_start_date'] ."</label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input name=\"user-email\" value=\"". $_SESSION['email'] ."\"hidden/>
-                                    <input type=\"submit\" name=\"project-favorite\" value=\"Info\" />
-                                    <input type=\"submit\" name=\"project-delete\" value=\"Delete\" />
+                                    <input type=\"submit\" name=\"project-info\" value=\"Info\" />
+                                    <input type=\"submit\" name=\"favorite-delete\" value=\"Delete\" />
                                 </form>";
 
                                 
@@ -82,7 +82,7 @@
                                     <label>Project start date: ". $row['project_start_date'] ."</label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input type=\"submit\" name=\"project-info\" value=\"Info\" />
-                                    <input type=\"submit\" name=\"favorite-project\" value=\"Add Favorite\" />
+                                    <input type=\"submit\" name=\"project-favorite\" value=\"Add Favorite\" />
                                     <input type=\"submit\" name=\"project-delete\" value=\"Delete\" />
                                 </form>";
                             }

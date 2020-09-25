@@ -29,6 +29,49 @@
             </section>
 
             <section>
+            <h3>Add Intent</h3>
+            <form action="includes/project-info.inc.php" method="post">
+                <label for="title">Title</label>
+                <br>
+                <input type="text" name="intent-title" placeholder="Intent Title">
+                <br><br>
+                <input name="project-id" <?php echo 'value="'. $_GET['project-id'] .'"' ?> hidden/>
+                <button type="submit" name="intent-add" class="btn">Add an intent</button>
+            </form>
+                
+            </section>
+
+            <section>
+                <h2>All your intents:</h2>
+                <?php
+                    $sql = 'SELECT * FROM intents WHERE project_id=?';
+                    $stmt = mysqli_stmt_init($conn);
+                    if (mysqli_stmt_prepare($stmt, $sql)) {
+                        
+                        mysqli_stmt_bind_param($stmt, "s", $_GET['project-id']);
+                        mysqli_stmt_execute($stmt);
+                        $result = $stmt->get_result();
+                        if ($result->num_rows > 0) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                echo "
+                                <form action=\"includes/project-info.inc.php\" method=\"post\">
+                                    <label>Intent title: ". $row['title'] ."</label>
+                                    <input name=\"intent-title\" value=\"". $row['title'] ."\"hidden/>
+                                    <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
+                                    <input type=\"submit\" name=\"intent-info\" value=\"View\" />
+                                    <input type=\"submit\" name=\"intent-delete\" value=\"Remove\" />
+                                </form>";
+                            }
+                        } 
+                        else {
+                            echo "No teams in this project yet!";
+                        }
+                    }
+                ?>
+
+            </section>
+
+            <section>
                 <h2>Appointed Project Teams</h2>
                 <?php
 
