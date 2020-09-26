@@ -60,9 +60,10 @@
                                     <label>Intent title: ". $row['title'] ."</label>
                                     <input name=\"intent-title\" value=\"". $row['title'] ."\"hidden/>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
-                                    <input type=\"submit\" name=\"intent-info\" value=\"View\" />
-                                    <input type=\"submit\" name=\"intent-delete\" value=\"Remove\" />";
-                                
+                                    <input class=\"button is-success is-outlined is-normal\" type=\"submit\" name=\"intent-info\" value=\"View Intent \" />
+                                    <input class=\"button is-danger is-outlined is-normal\" type=\"submit\" name=\"intent-delete\" value=\"Remove\" />";
+
+
                                 // Check if all tasks are complete
                                 $sql = 'SELECT * FROM tasks WHERE project_id=? AND intent_title=? AND task_percentage!=100';
                                 $stmt = mysqli_stmt_init($conn);

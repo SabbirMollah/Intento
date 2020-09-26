@@ -5,27 +5,48 @@
     <main class="main">
  
         
-            <section>
-                <div class="column">
-                    <form action="includes/projects.inc.php" method="post">
-                        <label for="project_name">Project Title</label>
-                        <br>
-                        <input type="text" name="project_name" placeholder="Project Title">
-                        <br><br>
-                        <label for="project_start_date">Project Start Date</label>
-                        <br>
-                        <input type="date" name="project_start_date">
-                        <br><br>
-                        
-                        <button type="submit" name="project-create" class="btn">Create New Project</button>
-                    </form>
+            <section class="section">
+                <div class="columns">
+                    <div class="column is-one-third is-4">
+                        <form action="includes/projects.inc.php" method="post">
+                            <div class="field">
+                                <label for="project_name" class="label">Project Title</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-info" type="text" name="project_name" placeholder="Project Title">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-spinner fa-pulse"></i>
+                                </span>
+                            </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="project_start_date" class="label">Project Start Date</label>
+                                <div class="control has-icons-left">
+                                    <input class="input is-info" type="date" name="project_start_date">
+                                    <span class="icon is-small is-left">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button class="button is-info is-outlined is-inverted" type="submit" name="project-create">Create New Project</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column"></div>
                 </div>
             </section>
-            <div class="columns">
-            <section>
-                <div class="column">
-                    <div class="notification">
-                        <h2>Projects I Favorited</h2>
+            
+            <section class="section has-text-centered single-spaced">
+            <h1 class="title is-4 has-text-weight-bold has-text-black">Projects I Favorited</h1>
+                <div class="columns">
                     <?php
                     require "includes/connect_db.php";
 
@@ -40,32 +61,39 @@
                             // output data of each row
                             while($row = mysqli_fetch_assoc($result)) {
                                 
-                                echo "
+                                echo "<div class=\"column\">
+                                <div class=\"notification is-info\">
                                 <form action=\"includes/projects.inc.php\" method=\"post\">
-                                    <label>Project name: ". $row['project_name'] ."</label>
-                                    <label>Project start date: ". $row['project_start_date'] ."</label>
+                                    <label><h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
+                                    <label><h2> <b>Start date:</b> ". $row['project_start_date'] ."</h2></label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input name=\"user-email\" value=\"". $_SESSION['email'] ."\"hidden/>
                                     <br>
-                                    <input type=\"submit\" name=\"project-info\" value=\"Info\" />
-                                    <input type=\"submit\" name=\"favorite-delete\" value=\"Delete\" />
-                                </form>";                                
+                                    <input class=\"button is-success is-normal\" type=\"submit\" name=\"project-info\" value=\"Info\" />
+                                    <input class=\"button is-danger is-normal\" type=\"submit\" name=\"favorite-delete\" value=\"Delete\" />
+                                </form>
+                                </div>
+                                </div>";                                
                                 }
                             }
                         else {
-                            echo "You haven't favorited any projects yet!";
+                            echo "<div class=\"column\">
+                            <div class=\"notification is-info\">
+                            You haven't favorited any projects yet!
+                            </div>
+                            </div>";
                         }
                     }
                     ?>
                 </div>
-                </div>
             </section>
 
+            <br><br>
 
-            <section>
-                <div class="column">
-                <div class="notification">
-                    <h2>Projects I Created</h2>
+
+            <section class="section has-text-centered single-spaced">
+                <h1 class="title is-4 has-text-weight-bold has-text-black">Projects I Created</h1>
+                <div class="columns">
                 <?php
                     require "includes/connect_db.php";
 
@@ -80,30 +108,40 @@
                             // output data of each row
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "
-                                <form action=\"includes/projects.inc.php\" method=\"post\">
-                                    <label>Project name: ". $row['project_name'] ."</label>
-                                    <label>Project start date: ". $row['project_start_date'] ."</label>
-                                    <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
-                                    <input type=\"submit\" name=\"project-info\" value=\"Info\" />
-                                    <input type=\"submit\" name=\"project-favorite\" value=\"Add Favorite\" />
-                                    <input type=\"submit\" name=\"project-delete\" value=\"Delete\" />
-                                </form>";
+                                <div class=\"column\">
+                                    <div class=\"notification is-info\">
+                                        <form action=\"includes/projects.inc.php\" method=\"post\">
+                                            <label<h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
+                                            <label><h1><b>Project start date:</b> ". $row['project_start_date'] ."</h1></label>
+                                            <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
+                                            <br>
+                                            <input class=\"button is-success is-normal\" type=\"submit\" name=\"project-info\" value=\"Info\" />
+                                            <input class=\"button is-danger is-normal\" type=\"submit\" name=\"project-delete\" value=\"Delete\" />
+                                            <br>
+                                            <input type=\"submit\" name=\"project-favorite\" value=\"Add Favorite\" />
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                                ";
                             }
                         }
                         else {
-                            echo "You haven't created any projects yet!";
+                            echo "<div class=\"column\">
+                            <div class=\"notification is-info\">
+                            You haven't created any projects yet!
+                            </div>
+                            </div>";
                         }
-                    }
-                ?>
+                    } 
+                    ?>
                 </div>
-                </div>
-
             </section>
             
-            <section>
-                <div class="column">
-                <div class="notification">
-                <h2>Projects I am appointed to</h2>
+            <section class="section has-text-centered single-spaced">
+                <h1 class="title is-4 has-text-weight-bold has-text-black">Projects I am appointed to</h1>
+                <div class="columns">
+                    
                 <?php
                     require "includes/connect_db.php";
 
@@ -117,27 +155,33 @@
                         if ($result->num_rows > 0) {
                             // output data of each row
                             while($row = mysqli_fetch_assoc($result)) {
-                                echo "
+                                echo "<div class=\"column\">
+                                <div class=\"notification is-info\">
                                 <form action=\"includes/projects.inc.php\" method=\"post\">
-                                    <label>Project name: ". $row['project_name'] ."</label>
-                                    <label>Start date: ". $row['project_start_date'] ."</label>
+                                    <label><h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
+                                    <label><h1><b>Start date:</b> ". $row['project_start_date'] ."</h1></label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input name=\"team-id\" value=\"". $row['team_id'] ."\"hidden/>
-                                    <input type=\"submit\" name=\"project-info\" value=\"Info\" />
-                                </form>";
+                                    <br>
+                                    <input class=\"button is-success is-normal\" type=\"submit\" name=\"project-info\" value=\"Info\" />
+                                </form>
+                                </div>
+                                </div>";
                             }
                         } 
                         else {
-                            echo "Your teams are not appointed to any projects yet!";
+                            echo "<div class=\"column\">
+                            <div class=\"notification is-info\">
+                            Your teams are not appointed to any projects yet!
+                            </div>
+                            </div>";
                         }
                     }
                 ?>
-            </div>
-            </div>
+                </div>
             </section>
 
             
-        </div>
     </main>
 <?php
     require "footer.php";

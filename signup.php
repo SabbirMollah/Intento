@@ -7,9 +7,7 @@
         <section class="section no-margin">
             <div class="container">
                 <div class="columns">
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column">
+                    <div class="column is-one-third is-offset-8 single-spaced">
                     <h1 class="title is-4 has-text-black has-text-centered">Signup</h1>
                         <form action="includes/signup.inc.php" method="post">
                             
@@ -70,9 +68,7 @@
                                             <i class="fas fa-lock"></i>
                                         </span>
                                 </div>
-                            </div>
-                                <br><br>
-                                                        
+                            </div>                                                        
                                 <div class="control">               
                                     <button class="button is-link" type="submit" name="signup-submit" class="btn">Signup</button>
                                 </div>

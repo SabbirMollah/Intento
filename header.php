@@ -14,10 +14,11 @@ include('includes/connect_db.php');
 		<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         <!-- <link rel="stylesheet" href="styles/debug.css"> -->
         <link rel="stylesheet" href="styles/helpers.css">
+        <link rel="stylesheet" href="styles/grid.css">
 <style>
 
 .hero {
-	background: black url(images/bg.png) center / cover;
+	background: black url(images/b1.png) center / cover;
 }
 
 @media (max-width: 1024px) { .hero { background: black url(images/3.jpg) center / cover; } }
@@ -41,13 +42,10 @@ include('includes/connect_db.php');
                 <div>
                     <?php
                         if (isset($_SESSION['email'])) {
-                            echo '<div class="hero-head">Hello '. $_SESSION['last_name'] . '!
+                            echo '<div class="hero-head">
 	                            <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-		                            <div class="column left">'.'
-                            
-			                            <figure class="navbar-item image">
-				                            <img src="images/logo.png" style="width: 6.25rem; height: 1rem;"alt="logo">		
-                                        </figure>
+		                            <div class="column left subtitle is-4 has-text-weight-bold has-text-black">'.'
+                                    Hello '. $_SESSION['last_name'] . '!
                                     </div>
                                     <div class="column center desktop">
 			                            <p class="navbar-item has-text-black"><a href="index.php">Home</a></p>
@@ -57,8 +55,10 @@ include('includes/connect_db.php');
                                     </div>
                                     <div class="column right">
                                         <form action="includes/logout.inc.php" method="post" class="navbar-item has-text-black desktop">
-                                            <button type="Submit" name="logout-submit" class="btn"> Logout </button>
+                                        <div class="control">
+                                            <button class="button is-link is-light" type="Submit" name="logout-submit"> Logout </button>
                                         </form>
+                                        </div>
                                     </div>
                                     <figure class="navbar-item image has-text-black center">
 				                        <i class="fas fa-bars" style="width: 1rem; height: 1rem;"></i>
@@ -70,9 +70,7 @@ include('includes/connect_db.php');
                             echo '<div class="hero-head">
                                     <div class="columns is-mobile is-marginless heading has-text-weight-bold">
                                         <div class="column left">                        
-                                            <figure class="navbar-item image">
-                                                <img src="images/logo.png" style="width: 6.25rem; height: 1rem;"alt="logo">		
-                                            </figure>
+                                            
                                         </div>
                                         <div class="column center desktop">
 			                                <p class="navbar-item has-text-black"><a href="index.php">Home</a></p>
@@ -103,11 +101,14 @@ include('includes/connect_db.php');
                                                 </div>
                                                 </div>
                                                 <div class="control">
-                                                   <button class="button is-link is-light" type="Submit" name="login-submit" class="btn">Login</button>
+                                                   <button class="button is-link is-light" type="Submit" name="login-submit">Login</button>
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                        <figure class="navbar-item image">
+				                            <i class="fas fa-3x fa-bars has-text-black"
+					                        <style="width: 1rem; height: 1rem;"></i>
+			                            </figure>
                                 </div>';
                             }
                     ?>
