@@ -112,14 +112,13 @@
                                     <div class=\"notification is-info\">
                                         <form action=\"includes/projects.inc.php\" method=\"post\">
                                             <label<h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
-                                            <label><h1><b>Project start date:</b> ". $row['project_start_date'] ."</h1></label>
+                                            <label><h2> <b>Start date:</b> ". $row['project_start_date'] ."</h2></label>
                                             <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                             <br>
                                             <input class=\"button is-success is-normal\" type=\"submit\" name=\"project-info\" value=\"Info\" />
                                             <input class=\"button is-danger is-normal\" type=\"submit\" name=\"project-delete\" value=\"Delete\" />
                                             <br>
-                                            <input type=\"submit\" name=\"project-favorite\" value=\"Add Favorite\" />
-                                            
+                                            <input class=\"button is-info is-normal\" type=\"submit\" name=\"project-favorite\" value=\"Add to Favorites\" />
                                         </form>
                                     </div>
                                 </div>
