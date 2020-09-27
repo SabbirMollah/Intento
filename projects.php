@@ -45,7 +45,7 @@
             </section>
             
             <section class="section has-text-centered single-spaced">
-            <h1 class="title is-4 has-text-weight-bold has-text-black">Projects I Favorited</h1>
+            <h1 class="title has-text-weight-bold has-text-black">Projects I Favorited</h1>
                 <div class="columns">
                     <?php
                     require "includes/connect_db.php";
@@ -65,7 +65,13 @@
                                 <div class=\"notification is-info\">
                                 <form action=\"includes/projects.inc.php\" method=\"post\">
                                     <label><h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
-                                    <label><h2> <b>Start date:</b> ". $row['project_start_date'] ."</h2></label>
+                                    <br>
+                                    <label><b>Start date:</b> ". $row['project_start_date'] ."</label>
+                                    <br><br>
+                                    <label><b>Progress:</b></label>
+                                    <div class=\"progress\">
+                                        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 25%;\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">25%</div>
+                                    </div>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input name=\"user-email\" value=\"". $_SESSION['email'] ."\"hidden/>
                                     <br>
@@ -92,7 +98,7 @@
 
 
             <section class="section has-text-centered single-spaced">
-                <h1 class="title is-4 has-text-weight-bold has-text-black">Projects I Created</h1>
+                <h1 class="title has-text-weight-bold has-text-black">Projects I Created</h1>
                 <div class="columns">
                 <?php
                     require "includes/connect_db.php";
@@ -112,13 +118,19 @@
                                     <div class=\"notification is-info\">
                                         <form action=\"includes/projects.inc.php\" method=\"post\">
                                             <label<h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
-                                            <label><h2> <b>Start date:</b> ". $row['project_start_date'] ."</h2></label>
+                                            <label> <b>Start date:</b> ". $row['project_start_date'] ."</label>
                                             <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
+                                            <br><br>
+                                            <label><b>Progress:</b></label>
+                                            <div class=\"progress\">
+                                                <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 25%;\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">25%</div>
+                                            </div>
                                             <br>
+                                            
                                             <input class=\"button is-success is-normal\" type=\"submit\" name=\"project-info\" value=\"Info\" />
                                             <input class=\"button is-danger is-normal\" type=\"submit\" name=\"project-delete\" value=\"Delete\" />
                                             <br>
-                                            <input class=\"button is-info is-normal\" type=\"submit\" name=\"project-favorite\" value=\"Add to Favorites\" />
+                                            <input class=\"btn btn-secondary\" type=\"submit\" name=\"project-favorite\" value=\"Add to Favorites\" />
                                         </form>
                                     </div>
                                 </div>
@@ -138,7 +150,7 @@
             </section>
             
             <section class="section has-text-centered single-spaced">
-                <h1 class="title is-4 has-text-weight-bold has-text-black">Projects I am appointed to</h1>
+                <h1 class="title has-text-weight-bold has-text-black">Projects I am appointed to</h1>
                 <div class="columns">
                     
                 <?php
@@ -158,10 +170,14 @@
                                 <div class=\"notification is-info\">
                                 <form action=\"includes/projects.inc.php\" method=\"post\">
                                     <label><h1 class=\"title is-size-4\"> ". $row['project_name'] ."</h1></label>
-                                    <label><h1><b>Start date:</b> ". $row['project_start_date'] ."</h1></label>
+                                    <label><b>Start date:</b> ". $row['project_start_date'] ."</label>
                                     <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                     <input name=\"team-id\" value=\"". $row['team_id'] ."\"hidden/>
-                                    <br>
+                                    <br><br>
+                                    <label><b>Progress:</b></label>
+                                    <div class=\"progress\">
+                                        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 25%;\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">25%</div>
+                                    </div>
                                     <input class=\"button is-success is-normal\" type=\"submit\" name=\"project-info\" value=\"Info\" />
                                 </form>
                                 </div>

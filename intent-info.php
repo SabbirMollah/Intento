@@ -96,7 +96,7 @@
                                 <br>
                                 <label><b>Due date: </b>". $row['task_due_date'] ."</label>
                                 <br><br>
-                                <b>Percentage:</b> <input id=\"sliderWithValue\" class=\"slider has-output is-large is-danger is-circle\" step=\"1\" name=\"task-percentage\" type=\"range\" min=\"1\" max=\"100\" value=\"".$row['task_percentage']."\">
+                                <b>Percentage:</b> <input id=\"sliderWithValue\" class=\"slider has-output is-medium is-warning\" step=\"1\" name=\"task-percentage\" type=\"range\" min=\"1\" max=\"100\" value=\"".$row['task_percentage']."\">
                                 <input name=\"project-id\" value=\"". $row['project_id'] ."\"hidden/>
                                 <input name=\"intent-title\" value=\"". $row['intent_title'] ."\"hidden/>
                                 <input name=\"task-title\" value=\"". $row['title'] ."\"hidden/>
@@ -115,13 +115,8 @@
                 ?>
                 </div>
             </section>
-            
         </div>
     </main>
-
-            <script>  
-                bulmaSlider.attach();
-            </script>  
 <?php
     require "footer.php";
 ?>
