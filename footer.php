@@ -1,31 +1,30 @@
-       <footer class="hero-foot center" style="padding: 2rem;">
-              <div  id="grid" style="width: 768px;">
-              
-                     <div id="a" class="center-column  has-text-white">
-			       <p class="has-text-centered has-text is-7">
-                                   Intento is a web-based project management application.
-                            </p>
-                     </div>
-                     
-                     <div id="b" class="center-column  has-text-white">
-                            <p class="has-text-centered has-text is-7">By using this application users will be able to create and manage their projects. </p>
-                     </div>
 
-                     <div id="d" class="center-column">
-                            <p class="has-text-white">
-                                   Copyright &copy; AfsanaChowdhury 
-                            </p>
-                     </div>
-                     
-                     <div id="e" class="center-column has-text-white"><p>
-			<a class="button is-danger is-inverted is-rounded is-outlined has-text-weight-bold is-7"
-                            style="width: 100%; border: 0.15em solid white" href="mailto:afsana.chowdhury01@northsouth.edu">Give Feedback</a></p>
-                     </div>
-              </div>
-
-       </div>
-       </footer>
-</div>      
-            
-</body>
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-left">Copyright © Afsana Chowdhury!</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-right">
+                        <a class="mr-3" href="#!">Privacy Policy</a>
+                        <a href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Contact form JS-->
+        <script src="assets/mail/jqBootstrapValidation.js"></script>
+        <script src="assets/mail/contact_me.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

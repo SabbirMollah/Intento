@@ -1,84 +1,40 @@
 <?php
-    require "header.php";
+    require('header.php');
 ?>
 
-    <main>
-    <div>
-        <section class="section no-margin">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-one-third is-offset-8 single-spaced">
-                    <h1 class="title is-4 has-text-black has-text-centered">Signup</h1>
-                        <form action="includes/signup.inc.php" method="post">
-                            
-                            <div class="field">
-                                <label for="first_name" class="label">First Name</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input type="text" class="input" name="first_name" placeholder="First Name">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fas fa-icon"></i>
-                                        </span>
-                                    </div>
-                            </div>
-                            
-                            <div class="field">
-                                <label for="last_name" class="label">Last Name</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input type="text" class="input" name="last_name" placeholder="Last Name">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fas fa-icon"></i>
-                                        </span>
-                                    </div>
-                            </div>
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Sign Up Here!</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+        <form action="includes/signup.inc.php" method="post">
+            <div>  
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="First Name" name="first_name" required="required"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Last Name" name="last_name" required="required"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Email" name="email" required="required"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Password" name="pwd" required="required"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Repeat Password" name="pwd-repeat" required="required"/>
 
-                            <div class="field">
-                                <label for="email" class="label">Email</label>
-                                <div class="control has-icons-left has-icons-right">
-                                    <input type="email" class="input" name="email" placeholder="E-mail">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-envelope"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fas fa-triangle"></i>
-                                        </span>
-                                    </div>
-                            </div>
-
-                            <div class="field">
-                            <label for="pwd" class="label">Password</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="password" name="pwd" placeholder="Password">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-lock"></i>
-                                        </span>
-                                </div>
-                            </div>
-
-                            <div class="field">
-                            <label for="pwd" class="label">Password</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="password" name="pwd-repeat" placeholder="Repeat password">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-lock"></i>
-                                        </span>
-                                </div>
-                            </div>                                                        
-                                <div class="control">               
-                                    <button class="button is-link" type="submit" name="signup-submit" class="btn">Signup</button>
-                                </div>
-                        </form>
-                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="text-center">
+                <div id="success"></div>
+                <button class="btn btn-primary btn-xl text-uppercase" name="signup-submit" type="submit">Signup!</button>
+            </div>
+        </form>
     </div>
+</section>
+
 <?php
-    require "footer.php";
+    require('footer.php');
 ?>
