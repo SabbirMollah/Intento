@@ -35,6 +35,8 @@
         else{
             mysqli_stmt_bind_param($stmt, "ss", $intent_title, $project_id);
             mysqli_stmt_execute($stmt);
+
+            echo $project_id;
             header("Location: ../project-info.php?intent-add=success&project-id=".$project_id);
             
             exit();

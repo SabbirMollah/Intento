@@ -1,119 +1,74 @@
-<?php 
-session_start();
-include('includes/connect_db.php'); 
-?>
-
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Intento</title>
-<link rel="icon" href="images/icon.png" type="image/x-icon">
-<link rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
-		<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-        <!-- <link rel="stylesheet" href="styles/debug.css"> -->
-        <link rel="stylesheet" href="styles/helpers.css">
-<style>
-
-.hero {
-	background: black url(images/bg.png) center / cover;
-}
-
-@media (max-width: 1024px) { .hero { background: black url(images/3.jpg) center / cover; } }
-@media (max-width:  768px) { .hero { background: black url(images/rose.jpg) center / cover; } }
-
-</style>
-
-</head>
-
-<body class="hero">
-    
-    <div class="hero-body">
-    <header class="hero-body">
-        <div class="is-overlay has-text-centered single-spaced" style="top: 82px;">
-            <h1 class="title is-1 has-text-black">Intento</h1> 
-            <h2 class="subtitle is-4 has-text-weight-light has-text-black"> : A project management solution : : </h2>
-	    </div>    
-    </header> 
-        <nav class="header-height">
-            
-                <div>
-                    <?php
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Intento! Manage Projects</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="" /></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ml-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                        <?php 
+                        session_start();
                         if (isset($_SESSION['email'])) {
-                            echo '<div class="hero-head">Hello '. $_SESSION['last_name'] . '!
-	                            <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-		                            <div class="column left">'.'
-                            
-			                            <figure class="navbar-item image">
-				                            <img src="images/logo.png" style="width: 6.25rem; height: 1rem;"alt="logo">		
-                                        </figure>
-                                    </div>
-                                    <div class="column center desktop">
-			                            <p class="navbar-item has-text-black"><a href="index.php">Home</a></p>
-			                            <p class="navbar-item has-text-black"><a href="#">Profile</a></p>
-			                            <p class="navbar-item has-text-black"><a href="teams.php">Teams</a></p>
-                                        <p class="navbar-item has-text-black"><a href="projects.php">Projects</a></p>
-                                    </div>
-                                    <div class="column right">
-                                        <form action="includes/logout.inc.php" method="post" class="navbar-item has-text-black desktop">
-                                            <button type="Submit" name="logout-submit" class="btn"> Logout </button>
-                                        </form>
-                                    </div>
-                                    <figure class="navbar-item image has-text-black center">
-				                        <i class="fas fa-bars" style="width: 1rem; height: 1rem;"></i>
-			                        </figure>
-                                </div>
-                            </div>';
+                            echo '
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="profile.php">Profile</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="teams.php">Teams</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="projects.php">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="about.php">About Us</a></li>
+                            <form class="form-inline mr-sm-8" action="includes/logout.inc.php" method="post">
+                                <button class="btn btn-warning my-2 my-sm-0" type="Submit" name="logout-submit">Logout</button>
+                            </form>';
                         }
-                        else{
-                            echo '<div class="hero-head">
-                                    <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                                        <div class="column left">                        
-                                            <figure class="navbar-item image">
-                                                <img src="images/logo.png" style="width: 6.25rem; height: 1rem;"alt="logo">		
-                                            </figure>
-                                        </div>
-                                        <div class="column center desktop">
-			                                <p class="navbar-item has-text-black"><a href="index.php">Home</a></p>
-                                            <p class="navbar-item has-text-black"><a href="#">About Us</a></p>
-                                            <div class="control">
-                                                <a class="navbar-item button is-link is-light" href="signup.php">Signup</a>
-                                        </div>
-                                        </div>
-                                        <div class="column right">
-			                            <p class="navbar-item has-text-black desktop">
-                                        <form action="includes/login.inc.php" method="post">
-                                            <div class="field is-horizontal">
-                                                <div class="control has-icons-left has-icons-right">
-                                                    <input class="input" type="email" placeholder="Email input"  name="email">
-                                                        <span class="icon is-small is-left">
-                                                            <i class="fas fa-envelope"></i>
-                                                        </span>
-                                                        <span class="icon is-small is-right">
-                                                            <i class="fas fa-triangle"></i>
-                                                        </span>
-                                                </div>
-                                                <div class="field">
-                                                <div class="control has-icons-left">
-                                                    <input class="input" type="password" name="pwd" placeholder="Password">
-                                                    <span class="icon is-small is-left">
-                                                        <i class="fas fa-lock"></i>
-                                                    </span>
-                                                </div>
-                                                </div>
-                                                <div class="control">
-                                                   <button class="button is-link is-light" type="Submit" name="login-submit" class="btn">Login</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>';
-                            }
-                    ?>
-
+                        else {
+                            echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="about.php">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="signup.php">Signup</a></li>
+                                           
+                                <form class="form-inline mr-sm-8" action="includes/login.inc.php" method="post">
+                                    <input class="form-control mr-sm-2" type="email" placeholder="Email input"  name="email">
+                                    <input class="form-control mr-sm-2" type="password" name="pwd" placeholder="Password">
+                                    <button class="btn btn-success my-2 my-sm-0" type="Submit" name="login-submit">Login</button>
+                                </form>';
+                        }
+                        ?>
+                    </ul>
                 </div>
+            </div>
         </nav>
 
+        <header class="masthead">
+            <div class="container">
 
-
+            <?php 
+                if (isset($_SESSION['email'])) {
+                    echo '<div class="masthead-subheading">Welcome ' . $_SESSION['last_name'] . '!</div>
+                    <div class="masthead-heading text-uppercase">It\'s Nice To Meet You!</div>';
+                }
+                else{
+                    echo '<div class="masthead-heading text-uppercase">It\'s Nice To Meet You!</div>
+                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="signup.php">Sign Up!</a>';  
+                }
+            ?>
+                
+        
+            </div>
+        </header>
