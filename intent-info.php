@@ -2,6 +2,7 @@
     require('header.php');
 ?>
 
+
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">

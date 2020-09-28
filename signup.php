@@ -24,6 +24,7 @@
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="Repeat Password" name="pwd-repeat" required="required"/>
+
                 </div>
             </div>
             <div class="text-center">

@@ -2,6 +2,7 @@
     require('header.php');
 ?>
 
+
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
@@ -10,6 +11,7 @@
         <div class="row">
         <?php
             require "includes/connect_db.php";
+
 
             $sql = 'SELECT projects.project_id, project_name, project_start_date, user_email FROM projects, favorites WHERE favorites.project_id = projects.project_id AND user_email=?';
             $stmt = mysqli_stmt_init($conn);
@@ -69,10 +71,12 @@
         <?php
             require "includes/connect_db.php";
 
+
             $sql = 'SELECT project_id, project_name, project_start_date, owner_email FROM projects WHERE owner_email=?';
             $stmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($stmt, $sql)) {
                         
+
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION['email']);
                 mysqli_stmt_execute($stmt);
                 $result = $stmt->get_result();
@@ -128,10 +132,12 @@
         <?php
             require "includes/connect_db.php";
 
+
             $sql = 'SELECT appointed_to.team_id, appointed_to.project_id, project_name, project_start_date, owner_email FROM projects, appointed_to WHERE projects.project_id = appointed_to.project_id AND owner_email= ?';
             $stmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($stmt, $sql)) {
                         
+
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION['email']);
                 mysqli_stmt_execute($stmt);
                 $result = $stmt->get_result();
@@ -166,12 +172,14 @@
                             <p> Your teams were not appointed to any projects! </p>
                         </div>
 
+
                         </div>
                     </div>';
             }
         }
     ?>
             
+
         
         </div>
     </div>
@@ -200,6 +208,7 @@
         </form>
     </div>
 </section>
+
 
 <?php
     require('footer.php');

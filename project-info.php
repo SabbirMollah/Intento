@@ -3,6 +3,7 @@
     require "includes/connect_db.php";
 ?>
 
+
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
 
@@ -83,6 +84,7 @@
 
                                 </div>
                             </div>';
+
                         }
                     } 
                     else {
@@ -133,6 +135,7 @@
         <div class="row">
             <?php
                 require "includes/connect_db.php";
+
 
                 $sql = 'SELECT teams.team_id, team_name, team_description FROM teams, appointed_to WHERE teams.team_id = appointed_to.team_id AND project_id=?';
                 $stmt = mysqli_stmt_init($conn);
@@ -189,6 +192,7 @@
                 require "includes/connect_db.php";
 
                 $sql = 'SELECT * FROM teams, users WHERE leader_email = email';
+
                     $result = mysqli_query($conn, $sql);
                     $queryResults = mysqli_num_rows($result);
                     if($queryResults > 0){
@@ -225,24 +229,7 @@
         </div>
     </div>
 </section>               
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    
-                    
-                    
-                    
-                    
-
+       
 <?php
     require('footer.php');
 ?>
