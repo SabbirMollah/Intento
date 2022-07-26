@@ -33,32 +33,32 @@ CREATE TABLE intent (
 
 CREATE TABLE task (
     title VARCHAR(25),
-    description VARCHAR,
+    description VARCHAR(200),
     start_date date,
     due_date date,
     finish_date date,
     percentage int,
-    intent_title VARCHAR,
+    intent_title VARCHAR(200),
     project_id INT,
     PRIMARY KEY (title, intent_title, project_id),
     CONSTRAINT task_intent_fk FOREIGN KEY (intent_title) REFERENCES intent(title),
-    CONSTRAINT task_intent_fk FOREIGN KEY (project_id) REFERENCES intent(project_id)
+    CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES project(project_id)
 );  
 
 CREATE TABLE team (
     team_id INT,
     t_name VARCHAR(25),
-    description VARCHAR,
-    leader_email VARCHAR,
+    description VARCHAR(200),
+    leader_email VARCHAR(25),
     PRIMARY KEY (team_id),
     CONSTRAINT team_users_fk FOREIGN KEY (leader_email) REFERENCES users(email)
 );
 
 CREATE TABLE assigned_to (
-    user_email VARCHAR,
+    user_email VARCHAR(25),
     project_id INT,
-    intent_title VARCHAR,
-    task_title VARCHAR,
+    intent_title VARCHAR(25),
+    task_title VARCHAR(25),
     PRIMARY KEY (user_email,project_id, intent_title, task_title),
     CONSTRAINT assigned_to_users_fk FOREIGN KEY (user_email) REFERENCES users(email),
     CONSTRAINT assigned_to_project_fk FOREIGN KEY (project_id) REFERENCES project(project_id),
@@ -67,7 +67,7 @@ CREATE TABLE assigned_to (
 );
 
 CREATE TABLE belongs_to (
-    user_email VARCHAR,
+    user_email VARCHAR(25),
     team_id INT,
     PRIMARY KEY (user_email, team_id),
     CONSTRAINT belongs_to_users_fk FOREIGN KEY (user_email) REFERENCES users(email),
@@ -75,7 +75,8 @@ CREATE TABLE belongs_to (
 );
 
 CREATE TABLE appointed_to (
-    user_email VARCHAR,
+    user_email VARCHAR(25),
+    team_id INT,
     PRIMARY KEY (user_email, team_id),
     CONSTRAINT appointed_to_users_fk FOREIGN KEY (user_email) REFERENCES users(email),
     CONSTRAINT appointed_to_team_fk FOREIGN KEY (team_id) REFERENCES team(team_id)
