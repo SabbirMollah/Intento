@@ -6,10 +6,10 @@ CREATE TABLE users (
     PRIMARY KEY (email)
 );
 
-CREATE TABLE project (
+CREATE TABLE projects (
     project_id INT(25),
-    p_name VARCHAR(25),
-    start_date date,
+    project_name VARCHAR(25),
+    project_start_date date,
     owner_email VARCHAR(25) NOT NULL,
     PRIMARY KEY (project_id),
     CONSTRAINT user_fk FOREIGN KEY (owner_email) REFERENCES users(email)
@@ -20,7 +20,7 @@ CREATE TABLE favorites (
     user_email VARCHAR(25) NOT NULL,
     PRIMARY KEY (project_id, user_email),
     CONSTRAINT user_favorites_fk FOREIGN KEY (user_email) REFERENCES users(email),
-    CONSTRAINT project_favorites_fk FOREIGN KEY (project_id) REFERENCES project(project_id)
+    CONSTRAINT project_favorites_fk FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
 
 CREATE TABLE intent (
@@ -42,10 +42,10 @@ CREATE TABLE task (
     project_id INT,
     PRIMARY KEY (title, intent_title, project_id),
     CONSTRAINT task_intent_fk FOREIGN KEY (intent_title) REFERENCES intent(title),
-    CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES project(project_id)
+    CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );  
 
-CREATE TABLE team (
+CREATE TABLE teams (
     team_id INT,
     t_name VARCHAR(25),
     description VARCHAR(200),
@@ -61,7 +61,7 @@ CREATE TABLE assigned_to (
     task_title VARCHAR(25),
     PRIMARY KEY (user_email,project_id, intent_title, task_title),
     CONSTRAINT assigned_to_users_fk FOREIGN KEY (user_email) REFERENCES users(email),
-    CONSTRAINT assigned_to_project_fk FOREIGN KEY (project_id) REFERENCES project(project_id),
+    CONSTRAINT assigned_to_project_fk FOREIGN KEY (project_id) REFERENCES projects(project_id),
     CONSTRAINT assigned_to_intent_fk FOREIGN KEY (intent_title) REFERENCES intent(title),
     CONSTRAINT assigned_to_task_fk FOREIGN KEY (task_title) REFERENCES task(title)    
 );
@@ -71,7 +71,7 @@ CREATE TABLE belongs_to (
     team_id INT,
     PRIMARY KEY (user_email, team_id),
     CONSTRAINT belongs_to_users_fk FOREIGN KEY (user_email) REFERENCES users(email),
-    CONSTRAINT belongs_to_team_fk FOREIGN KEY (team_id) REFERENCES team(team_id)
+    CONSTRAINT belongs_to_team_fk FOREIGN KEY (team_id) REFERENCES teams(team_id)
 );
 
 CREATE TABLE appointed_to (
@@ -79,5 +79,5 @@ CREATE TABLE appointed_to (
     team_id INT,
     PRIMARY KEY (user_email, team_id),
     CONSTRAINT appointed_to_users_fk FOREIGN KEY (user_email) REFERENCES users(email),
-    CONSTRAINT appointed_to_team_fk FOREIGN KEY (team_id) REFERENCES team(team_id)
+    CONSTRAINT appointed_to_team_fk FOREIGN KEY (team_id) REFERENCES teams(team_id)
 );
