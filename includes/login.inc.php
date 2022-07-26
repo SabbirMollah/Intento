@@ -21,17 +21,16 @@ if(isset($_POST['login-submit'])){
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             if($row = mysqli_fetch_assoc($result)){
-                $pwdcheck = password_verify($pwd, $row['pwd']);
-                if($pwdcheck == false){
-                    header("Location: ../index.php?error=wrongpassword");
+                if(strcmp($pwd, $row['passcode']) != 0){
+                    header("Location: ../index.php?error=wrongpassword".$pwd."-".$row['passcode']."-".$pwdcheck);
                     exit();
                 }
-                else if($pwdcheck == true){
+                else{
                     session_start();
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['first_name'] = $row['first_name'];
                     $_SESSION['last_name'] = $row['last_name'];
-                    $_SESSION['pwd'] = $row['pwd'];
+                    $_SESSION['pwd'] = $row['passcode'];
 
                     header("Location: ../index.php?login=success");
                     exit();

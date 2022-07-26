@@ -28,37 +28,35 @@ if(isset($_POST['signup-submit'])){
         header("Location: ../signup.php?error=passwordcheck&uid=".$firstName."&lastName=".$lastName."&email=".$email);
         exit();
     }
-
-
-        else{
-            mysqli_stmt_bind_param($stmt, "s", $email);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            $resultcheck = mysqli_stmt_num_rows($stmt);
-            if($resultcheck > 0){
-                header("Location: ../signup.php?error=emailalreadyused=".$firstName."&lastName=".$lastName);
-            exit();
-            }
-            else{
-                $sql = "INSERT INTO users (email, first_name, last_name, pwd) VALUES(?, ?, ?, ?)";
-                $stmt = mysqli_stmt_init($conn);
-                if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("Location: ../signup.php?sqlerror");
-                    exit();
-                }
-
-                else{
-                    $hashpwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-
-                    mysqli_stmt_bind_param($stmt, "ssss", $email, $firstName, $lastName,  $hashpwd);
-                    mysqli_stmt_execute($stmt);
-                    header("Location: ../signup.php?signup=success");
-                    exit();
-                }
-                
-            }
+    else{
+        mysqli_stmt_bind_param($stmt, "s", $email);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
+        $resultcheck = mysqli_stmt_num_rows($stmt);
+        if($resultcheck > 0){
+            header("Location: ../signup.php?error=emailalreadyused=".$firstName."&lastName=".$lastName);
+        exit();
         }
+        else{
+            $sql = "INSERT INTO users (email, first_name, last_name, pwd) VALUES(?, ?, ?, ?)";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                header("Location: ../signup.php?sqlerror");
+                exit();
+            }
+
+            else{
+                $hashpwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+
+                mysqli_stmt_bind_param($stmt, "ssss", $email, $firstName, $lastName,  $hashpwd);
+                mysqli_stmt_execute($stmt);
+                header("Location: ../signup.php?signup=success");
+                exit();
+            }
+            
+        }
+    }
     
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
